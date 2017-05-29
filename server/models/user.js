@@ -27,6 +27,13 @@ var UserSchema = new mongoose.Schema({
     enum: ['User','Moderator','Administrator'],
     default: 'User'
   },
+  birthday: {
+    type: String
+  },
+  groups : [{
+    name: 'string',
+    _id: {type: mongoose.Schema.Types.ObjectId, ref:'Group'}
+  }],
   tokens: [{
     access: {
       type: String,
