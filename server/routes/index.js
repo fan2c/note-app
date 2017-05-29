@@ -10,13 +10,15 @@ module.exports = function (app, passport) {
    */
   app.use('/api/users', require('./user'));
   app.use('/api/notes', require('./note'));
+  app.use('/api/events', require('./event'));
+  app.use('/api/groups', require('./group'));
 
-  // catch 404 error handler
-  app.use(function (req, res, next) {
-      var err = new Error('Not Found');
-      err.status = 404;
-      res.send('404');
-  });
+  // // catch 404 error handler
+  // app.use(function (req, res, next) {
+  //     var err = new Error('Not Found');
+  //     err.status = 404;
+  //     res.send('404');
+  // });
 
   /**
    * NORMAL ROUTES

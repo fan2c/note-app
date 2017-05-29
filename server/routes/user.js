@@ -7,9 +7,10 @@ var passport = require('passport');
 
 // POST /api/users/ API
 router.post('/', (req, res) => {
-  var body = _.pick(req.body, ['email', 'password']);
+  var body = _.pick(req.body, ['email', 'password', 'birthday']);
   var user = new User(body);
 
+  console.log(body);
   user.save().then(() => {
     return user.generateAuthToken();
   }).then((token) => {
