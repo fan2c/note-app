@@ -181,9 +181,9 @@ router.post('/search', passport.authenticate('jwt', { session: false }), (req, r
 // POST /api/events/birthday API
 router.post('/birthday', passport.authenticate('jwt', { session: false }), (req, res) => {
 
-  if (!ObjectID.isValid(req.body.groupId)) {
-    return res.status(404).send("Group is no exists!");
-  }
+  // if (!ObjectID.isValid(req.body.groupId)) {
+  //   return res.status(404).send("Group is no exists!");
+  // }
 
   if (req.body.isGroup) {
     Group.find({
