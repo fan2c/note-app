@@ -28,13 +28,21 @@ router.get('/group/:id',passport.authenticate('jwt', { session: false }), (req, 
     return res.status(404).send();
   }
 
-  Event.find({
-    groupId: id
-  }).then((events) => {
-    res.send({events});
-  }, (e) => {
-    res.status(400).send();
-  });
+  // check is not a group member
+  Group.find({
+      _id: req.body.groupId,
+      member:{$elemMatch:{_id:req.user._id}}
+    }).exec((err, group) => {
+      if (err) return handleError(err);
+
+      Event.find({
+        groupId: id
+      }).then((events) => {
+        res.send({events});
+      }, (e) => {
+        res.status(400).send();
+      });
+    });
 });
 
 // POST /api/events API
