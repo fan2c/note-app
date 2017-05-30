@@ -1,0 +1,143 @@
+<!-- views/index.login -->
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script src="js/semantic.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/login.js"></script>
+  <script src="js/page.js"></script>
+  <style type="text/css">
+  [contenteditable]:focus {
+      outline: 0px solid transparent;
+
+  }
+ #notes {
+   /*line-height: 116pt;*/
+ }
+
+
+  </style>
+<meta charset="UTF-8">
+<title>Quick Note</title>
+</head>
+<body>
+  <div class="ui secondary  menu">
+    <a class="active item"><i class="large home icon"></i> </a>
+    <div class="right menu">
+      <!-- <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div> -->
+      {{#if user}}
+        <!-- <a class="ui item" href="/logout"><i class="remove user icon"></i> </a> -->
+      {{else}}
+        <a class="ui item" href="/register"><i class="add user icon inverted"></i> </a>
+      {{/if}}
+
+    </div>
+  </div>
+  <div class="ui three column grid">
+    <div class="three wide column">
+
+                  <!-- <div>
+                    <p></p>
+
+                    <div class="ui ribbon label">Dogs</div>
+                    <p></p>
+                    <div class="ui teal ribbon label">Cats</div>
+                    <p></p>
+                    <div class="ui red ribbon label">Ogres </div>
+                    <p></p>
+
+                  </div> -->
+
+    </div>
+  <div class="ten wide column">
+    <div class="letter">
+      <div class="label">
+        <a class="ui orange ribbon label">Specs, 20170506</a>
+      </div>
+      <!-- <p>Dear Friends,</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod porta tempor. Donec pulvinar turpis nec velit pellentesque quis rhoncus sapien facilisis. Mauris quis massa dui, rhoncus viverra quam. Nulla tempus, augue ut consectetur facilisis, arcu elit pellentesque arcu, sed rutrum orci turpis pulvinar augue. Donec eget arcu mauris. Vestibulum tristique consequat lacus eget laoreet. Integer sed nisl sed nibh pulvinar ornare quis nec quam. Aenean rhoncus ligula ut lectus placerat a commodo quam vulputate. In eu metus turpis.</p>
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus facilisis erat in nibh auctor at aliquet velit vestibulum. Curabitur turpis diam, malesuada eu consequat eget, ultricies sed nunc. Aenean sed odio massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare vulputate congue. Quisque leo metus, condimentum nec molestie et, egestas luctus libero.</p>
+      <p>Mauris porta odio augue. Nam turpis dui, volutpat id feugiat vitae, sagittis a justo. Nam iaculis aliquet erat non varius. Suspendisse justo arcu, tincidunt sed auctor sit amet, fermentum id turpis. Suspendisse sed enim quis lorem vestibulum fermentum a ut nulla.</p>
+      <p>Nullam tincidunt elit quis nibh blandit interdum. Duis ullamcorper pellentesque pretium. Nulla facilisi. Morbi semper nisi et justo varius non fermentum metus ornare. Proin vehicula, mi vel volutpat accumsan, libero lacus euismod massa, id feugiat velit enim nec ligula. Aliquam ipsum est, volutpat aliquam tincidunt id, sagittis et velit. Nunc vitae massa vel dui facilisis consectetur vel id sem.</p>
+
+      <p>Aenean pulvinar, lacus ultrices euismod viverra, nulla diam interdum ligula, id mollis mi erat quis lectus. Morbi quis felis ut turpis condimentum dictum porttitor id mauris. Nam non tincidunt mauris. Donec viverra eleifend pharetra. Nulla eu ipsum et elit consectetur rutrum. Integer lorem purus, ultricies ac laoreet quis, feugiat vel dolor. Donec eu turpis neque. Nullam molestie sapien eu nibh semper sed convallis est pretium.</p> -->
+      <!-- <div class="form">
+        <div class="field">
+          <textarea placeholder="" ></textarea>
+          <div class="hidden span7" id="paper">
+          <div id="notes" contenteditable="true" data-color_dark="rgb(255, 255, 230)" data-color_standard="rgb(0, 0, 24)">dddddddddd
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="hidden span7" id="paper">
+        <div id="notes" contenteditable="true" data-color_dark="rgb(255, 255, 230)" data-color_standard="rgb(0, 0, 24)">
+        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+        </div>
+      </div>
+
+
+
+      </div>
+  </div>
+  <div class="three wide column">
+    <div class="ui left ">
+
+      {{#if user}}
+      <p></p>
+
+      <div class="ui raised card">
+        <div class="content">
+          <span class="right floated"> <a class="ui item" href="/logout"><i class="remove user icon"></i> </a> </span>
+          <div class="header">Cute Dog</div>
+          <div class="meta">
+            <span class="category">Animals</span>
+          </div>
+          <div class="description">
+            <p></p>
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="right floated author"><img class="ui avatar image" src="/images/avatar/small/matt.jpg"> {{user.email}}</div>
+        </div>
+      </div>
+
+      {{else}}
+          <form action="/login" method="post" class="ui large form">
+            <p></p>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" name="email" placeholder="Email">
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input type="password" name="password" placeholder="Password">
+              </div>
+            </div>
+            <div class="ui fluid large teal submit button">Login</div>
+          </div>
+          <!-- <div class="ui error message"></div> -->
+        </div>
+        </form>
+
+      {{/if}}
+
+  </div>
+</body>
+</html>
