@@ -163,4 +163,24 @@ router.post('/member/:id', passport.authenticate('jwt', { session: false }), (re
   })
 });
 
+// PATCH /api/groups/member/:id API
+router.patch('/member/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  var id = req.params.id;
+
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send("Group is not exists");
+  }
+
+  if (!ObjectID.isValid(req.body._id)) {
+    return res.status(404).send("User is not exists");
+  }
+
+  Group.findOneAndUpdate(
+    {"_id": id, "_creator":req.user._id, "member._id":req.body._id},
+    {$set: {"member.$.confirmed":true}},
+    (err,doc) => {
+      if (err) return handleError(err);
+    })
+});
+
 module.exports = router;

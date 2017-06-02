@@ -9,7 +9,8 @@ var GroupSchema = new mongoose.Schema({
   },
   member: [{
     name: 'string',
-    _id: {type: mongoose.Schema.Types.ObjectId, ref:'User'}
+    _id: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+    confirmed: {type: Boolean, default: false}
   }],
   _creator : {
     type: mongoose.Schema.Types.ObjectId,
@@ -20,7 +21,7 @@ var GroupSchema = new mongoose.Schema({
 GroupSchema.pre('save', function(next) {
   var group = this;
   if (this.isNew) {
-    group.member = {"name":"admin","_id":this._creator}
+    group.member = {"name":"admin","_id":this._creator,"confirmed":true}
   }
   next();
 });
